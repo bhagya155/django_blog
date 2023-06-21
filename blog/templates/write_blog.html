@@ -5,7 +5,7 @@
 {% block body %}
 <div class="container">
     <h3 class= "my-3"> Write Your Blog Here </h3>
-    <form class= "my-3" method = 'POST' action = "{% url 'add_blog' %}">
+    <form class= "my-3" method = 'POST' action = "{% url 'add_blog' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="mb-2">
             <label for='title' class="form-label">Blog Title</label>

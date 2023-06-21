@@ -6,11 +6,11 @@
 {% if post %}
 <div class="container">
     <h3 class= "my-3"> Write Your Blog Here </h3>
-    <form class= "my-3" method = 'POST' action = "{% url 'edit_blog' post.id %}">
+    <form class= "my-3" method = 'POST' action = "{% url 'edit_blog' post.id %}" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="mb-2">
             <label for='title' class="form-label">Blog Title</label>
-            <input type="text" class="form-control " id='title' value={{post.title}} name='title' placeholder= 'Blog Title'>
+            <input type="text" class="form-control " id='title' value= {{ post.title }} name='title' placeholder= 'Blog Title'>
         </div>
         <div class="mb-2">
             <label for='content' class="form-label">Blog Category</label>
@@ -24,7 +24,7 @@
         </div>
         <div class="mb-2">
             <label  class="form-label"> BlogImage :</label>
-            <input type="file" name="blogImg" id="blogImg" value= {{post.blogimg.url}}>
+            <input type="file" name="blogImg" id="blogImg" value= {{post.blogimg}}>
         </div>
         <div class="mb-2">
         <label for='content' class="form-label">Blog Content</label>

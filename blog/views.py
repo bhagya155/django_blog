@@ -14,9 +14,9 @@ def add_blog(request):
         title = request.POST.get('title')
         content = request.POST.get("content")
         category = request.POST.get('category')
-        blogImage = request.POST.get('blogImg')
-        print(request.POST.get("save_draf"))
-        if "save_blog" in request.POST:
+        blogImage = request.FILES.get('blogImg')
+        
+        if "save_post" in request.POST:
             is_completed = True
             Blogpost.objects.create(title=title,author= author, category=category,content=content,blogImage=blogImage, is_completed = is_completed)
             messages.success(request, 'Your draft saved successfully')

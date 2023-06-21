@@ -11,7 +11,7 @@ class Blogpost(models.Model):
     author = models.ForeignKey(User,on_delete=models.CASCADE)
     category = models.CharField(max_length=50)
     content = models.TextField()
-    blogImage = models.ImageField(upload_to="blogimg",null=True)
+    blogImage = models.ImageField(upload_to="images",null=True)
     is_completed = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
