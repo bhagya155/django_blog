@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% block title %} blog {% endblock title %}
+
+
+{% block body %}
+<div class="container">
+    <h3 class= "my-3"> Write Your Blog Here </h3>
+    <form class= "my-3" method = 'POST' action = "{% url 'add_blog' %}">
+        {% csrf_token %}
+        <div class="mb-2">
+            <label for='title' class="form-label">Blog Title</label>
+            <input type="text" class="form-control " id='title' name='title' placeholder= 'Blog Title'>
+        </div>
+        <div class="mb-2">
+            <label for='content' class="form-label">Blog Category</label>
+            <select name="category" class="form-select" aria-label="Default select example">
+                <option selected>Select Category</option>
+                <option value="Mental Health">Mental Health</option>
+                <option value="Heart Disease">Heart Disease</option>
+                <option value="Covid19">Covid19</option>
+                <option value="Immuninization">Immuninization</option>
+            </select>
+        </div>
+        <div class="mb-2">
+            <label  class="form-label"> BlogImage :</label>
+            <input type="file" name="blogImg" id="blogImg">
+        </div>
+        <div class="mb-2">
+        <label for='content' class="form-label">Blog Content</label>
+        <textarea class="form-control content" style="height: 300px" id='content' name='content' placeholder= 'Write your blog here'>
+        </textarea> 
+        </div>
+        <div class="mb-2 ">
+            <button type="submit" class=" btn btn-primary m-2" name="save_post" value="save_post"> Post Blog</button>
+        
+            <button type="submit" class=" btn btn-primary m2" name="save_draft" value="save_draft "> Save As Draft </a>
+        </div>
+    </form>
+</div>
+    
+
+
+{% endblock body %}

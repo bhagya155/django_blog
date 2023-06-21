@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% block title %} BlogPost {% endblock title %}
+
+{% block body %}
+
+{% if post %}
+<div class="container">
+  <div class="my-2">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+    <div class="col-md-1 ">
+        <img class="img-fluid" src='/media/blogimg/{{post.blogImage}} ' alt="user">  
+    </div>
+    
+    
+    <div class="col-md-11 ">
+        <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">Article by {{post.author}}</strong>
+        <h3 class="mb-0"> Title - {{post.title}}</h3>
+        <h3 class="mb-0"> Category - {{post.category}}</h3>
+        </div>
+    </div>
+    
+    <p class="card-text mb-auto m-4">{{post.content|safe}}</p>
+</div>
+  </div>
+</div>
+
+{% endif %}
+{% endblock body %}

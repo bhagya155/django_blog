@@ -1,0 +1,74 @@
+{% extends 'index.html' %}
+{% block title %}Patient page{% endblock title %}
+{% load static %}
+{% block body %}
+
+{% if user.is_authenticated and not None %}
+      <div class="container my-auto pt-5">
+        <h3>User Information</h3>
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-2">
+            <div class="col-md-4">
+            <img src='/media/{{user.profilepic}}' class="card-img-top" alt="...">
+            </div>
+            <div class = "col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Wellcome {{ user.username }}</h5>
+              <div class="row">
+                <div class="col">Name: {{ user.first_name }} {{ user.last_name }} </div>
+              </div>
+              <div class="row">
+                <div class="col">Email: {{ user.email }}</div>
+                
+              </div>
+              <div class="row">
+                <div class="col">City: {{ user.city }}</div>
+              </div>
+              <div class="row">
+                <div class="col">State: {{ user.state }}</div>
+              </div>
+              <div class="row">
+                <div class="col">Pincode: {{ user.pincode }}</div>
+              </div>
+              <div class="row">
+                <div class="col">Role: Doctor</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% endif %}
+        </div>   
+    </div>
+    
+     
+      {% if user.is_doctor %}
+
+      <div class="container">
+        <a href="{% url 'write_blog' %}" type="button" class="btn btn-primary m-2">Write Blog</a>
+        <a href="{% url 'view_blog' %}" type="button" class="btn btn-primary m-2">View blog</a>
+      </div>
+
+      <div class="container">
+        <h4 class="my-3 mx-3">Your Draft </h4>
+        {% for post in posts  %}
+        {% if user == post.author %}
+        <div class="my-2">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-primary">Article by {{post.author}}</strong>
+                <h4 class="mb-1"> Title - {{post.title}} </h4>
+                <h4 class="mb-1">Category -  {{post.category}}</h4>
+                <div class="mb-1 text-body-secondary"></div>
+                <p class="card-text mb-auto pt-2"><div class="preview">{{post.content|striptags | truncatechars:500}}</div></p>
+                <div>
+                <a href="{% url 'edit_blog' post.id %}" class="btn btn-primary">Edit Blog</a>
+            </div>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}  
+      </div> 
+      {% endif %}
+
+      {% endblock body %}
