@@ -53,7 +53,7 @@ def handlelogout(request):
 def user(request):
     posts = Blogpost.objects.filter(is_completed=False)
     context = {"posts": posts}
-    return render(request,"doctor.html",context)
+    return render(request,"user.html",context)
 def patient(request):
     return render(request,"patient.html")
     

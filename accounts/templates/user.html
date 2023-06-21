@@ -30,9 +30,15 @@
               <div class="row">
                 <div class="col">Pincode: {{ user.pincode }}</div>
               </div>
+              {% if user.is_doctor %}
               <div class="row">
                 <div class="col">Role: Doctor</div>
               </div>
+              {% else %}
+              <div class="row">
+                <div class="col">Role: Patient</div>
+              </div>
+              {% endif %}
             </div>
           </div>
         </div>
